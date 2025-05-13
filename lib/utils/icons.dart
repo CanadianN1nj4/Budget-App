@@ -1,35 +1,141 @@
 import 'package:flutter/widgets.dart';
-import 'package:lucide_icons/lucide_icons.dart'; // Using lucide_flutter
+import 'package:lucide_icons/lucide_icons.dart';
+
+// Curated list of relevant Lucide icon names for budgeting (PascalCase for display)
+const List<String> kAvailableIconNames = [
+  'ShoppingBasket', 'Zap', 'Home', 'Car', 'Film', 'Package',
+  'Utensils', 'Ticket', 'Bus', 'Plane', 'Fuel', 'HeartPulse', 'Gift',
+  'Shirt', 'Briefcase', 'GraduationCap', 'BookOpen', 'Wrench',
+  'Smartphone', 'Wifi', 'Tv', 'Music', 'Gamepad2', 'Baby', 'Users', 'Church',
+  'PiggyBank', 'Landmark', 'CreditCard', 'Wallet', 'Coins', 'Receipt',
+  'Droplet', 'Thermometer', 'Laptop', 'Mic', 'Smile', 'Coffee', 'Pizza',
+  'Scissors', 'Palette', 'PlaneTakeoff', 'Building', 'Factory', 'Hammer',
+  'Bone', 'HelpCircle', // Used ContentCut for 'Cut'
+  // Add any other icons you frequently use or want available
+  'Activity', 'Anchor', 'Award', 'Banknote', 'Bed', 'Bike', 'Bitcoin',
+  'Brush', 'Calculator', 'Camera', 'Cat', 'Dog', 'DollarSign', 'Dumbbell',
+  'Euro', 'FerrisWheel', 'Flower', 'Forklift', 'Gamepad', 'Gem', 'Grape',
+  'Headphones', 'IceCream', 'Key', 'Lightbulb', 'MapPin', 'Monitor',
+  'MousePointer', 'Paintbrush', 'Percent', 'Phone', 'Plug', 'Pocket',
+  'PoundSterling', 'Printer', 'Recycle', 'Refrigerator', 'Rocket', 'Router',
+  'School', 'Settings', 'Shield', 'Ship', 'ShoppingCart', 'Sprout', 'Store',
+  'Sun', 'Table', 'Tag', 'Target', 'Tent', 'ToyBrick', 'Trees', 'Trophy',
+  'Umbrella', 'UploadCloud', 'Watch', 'Waves', 'Wind', 'Wine', 'Youtube'
+];
 
 // Helper function to get Lucide icon by name
 // This is a simplified mapping. For a full solution, you might need a larger map
 // or a more dynamic way if lucide_flutter doesn't offer direct name lookup.
 IconData getLucideIcon(String iconName) {
-  switch (iconName.toLowerCase()) {
-    case 'shoppingbasket':
-      return LucideIcons.shoppingCart;
-    case 'zap':
-      return LucideIcons.zap;
-    case 'home':
-      return LucideIcons.home;
-    case 'car':
-      return LucideIcons.car;
-    case 'film':
-      return LucideIcons.film;
-    case 'utensils':
-      return LucideIcons.utensils;
-    case 'ticket':
-      return LucideIcons.ticket;
-    case 'piggybank':
-      return LucideIcons.piggyBank;
-    case 'landmark':
-      return LucideIcons.landmark;
-    case 'creditcard':
-      return LucideIcons.creditCard;
-    case 'wallet':
-      return LucideIcons.wallet;
-    case 'package': // Default
-    default:
-      return LucideIcons.package;
-  }
+  return switch (iconName.toLowerCase()) {
+    'shoppingbasket' => LucideIcons.shoppingBag, // Corrected from shoppingBag
+    'zap' => LucideIcons.zap,
+    'home' => LucideIcons.home,
+    'car' => LucideIcons.car,
+    'film' => LucideIcons.film,
+    'utensils' => LucideIcons.utensils,
+    'ticket' => LucideIcons.ticket,
+    'bus' => LucideIcons.bus,
+    'traintrack' => LucideIcons.train,
+    'plane' => LucideIcons.plane,
+    'fuel' => LucideIcons.fuel,
+    'heartpulse' => LucideIcons.heartPulse,
+    'gift' => LucideIcons.gift,
+    'shirt' => LucideIcons.shirt,
+    'briefcase' => LucideIcons.briefcase,
+    'graduationcap' => LucideIcons.graduationCap,
+    'bookopen' => LucideIcons.bookOpen,
+    'wrench' => LucideIcons.wrench,
+    'smartphone' => LucideIcons.smartphone,
+    'wifi' => LucideIcons.wifi,
+    'tv' => LucideIcons.tv,
+    'music' => LucideIcons.music,
+    'gamepad2' => LucideIcons.gamepad2,
+    'baby' => LucideIcons.baby,
+    'users' => LucideIcons.users,
+    'church' => LucideIcons.church,
+    'piggybank' => LucideIcons.piggyBank,
+    'landmark' => LucideIcons.landmark,
+    'creditcard' => LucideIcons.creditCard,
+    'wallet' => LucideIcons.wallet,
+    'coins' => LucideIcons.coins,
+    'receipt' => LucideIcons.receipt,
+    'droplet' => LucideIcons.droplet,
+    'thermometer' => LucideIcons.thermometer,
+    'laptop' => LucideIcons.laptop,
+    'mic' => LucideIcons.mic,
+    'smile' => LucideIcons.smile,
+    'coffee' => LucideIcons.coffee,
+    'pizza' => LucideIcons.pizza,
+    'scissors' => LucideIcons.scissors,
+    'palette' => LucideIcons.palette,
+    'planetakeoff' => LucideIcons.planeTakeoff,
+    'building' => LucideIcons.building,
+    'factory' => LucideIcons.factory,
+    'hammer' => LucideIcons.hammer,
+    'bone' => LucideIcons.bone,
+    'helpcircle' => LucideIcons.helpCircle,
+    'activity' => LucideIcons.activity,
+    'anchor' => LucideIcons.anchor,
+    'award' => LucideIcons.award,
+    'banknote' => LucideIcons.banknote,
+    'bed' => LucideIcons.bed,
+    'bike' => LucideIcons.bike,
+    'bitcoin' => LucideIcons.bitcoin,
+    'brush' => LucideIcons.brush,
+    'calculator' => LucideIcons.calculator,
+    'camera' => LucideIcons.camera,
+    'cat' => LucideIcons.cat,
+    'dog' => LucideIcons.dog,
+    'dollarsign' => LucideIcons.dollarSign,
+    'dumbbell' => LucideIcons.dumbbell,
+    'euro' => LucideIcons.euro,
+    'ferriswheel' => LucideIcons.ferrisWheel,
+    'flower' => LucideIcons.flower,
+    'forklift' => LucideIcons.forklift,
+    'gamepad' => LucideIcons.gamepad,
+    'gem' => LucideIcons.gem,
+    'grape' => LucideIcons.grape,
+    'headphones' => LucideIcons.headphones,
+    'icecream' => LucideIcons.iceCream,
+    'key' => LucideIcons.key,
+    'lightbulb' => LucideIcons.lightbulb,
+    'mappin' => LucideIcons.mapPin,
+    'monitor' => LucideIcons.monitor,
+    'mousepointer' => LucideIcons.mousePointer,
+    'paintbrush' => LucideIcons.paintbrush,
+    'percent' => LucideIcons.percent,
+    'phone' => LucideIcons.phone,
+    'plug' => LucideIcons.plug,
+    'pocket' => LucideIcons.pocket,
+    'poundsterling' => LucideIcons.poundSterling,
+    'printer' => LucideIcons.printer,
+    'recycle' => LucideIcons.recycle,
+    'refrigerator' => LucideIcons.refrigerator,
+    'rocket' => LucideIcons.rocket,
+    'router' => LucideIcons.router,
+    'school' => LucideIcons.school,
+    'settings' => LucideIcons.settings,
+    'shield' => LucideIcons.shield,
+    'ship' => LucideIcons.ship,
+    'shoppingcart' => LucideIcons.shoppingCart,
+    'sprout' => LucideIcons.sprout,
+    'store' => LucideIcons.store,
+    'sun' => LucideIcons.sun,
+    'table' => LucideIcons.table,
+    'tag' => LucideIcons.tag,
+    'target' => LucideIcons.target,
+    'tent' => LucideIcons.tent,
+    'toybrick' => LucideIcons.toyBrick,
+    'trees' => LucideIcons.trees,
+    'trophy' => LucideIcons.trophy,
+    'umbrella' => LucideIcons.umbrella,
+    'uploadcloud' => LucideIcons.uploadCloud,
+    'watch' => LucideIcons.watch,
+    'waves' => LucideIcons.waves,
+    'wind' => LucideIcons.wind,
+    'wine' => LucideIcons.wine,
+    'youtube' => LucideIcons.youtube,
+    _ => LucideIcons.package, // Default case
+  };
 }
