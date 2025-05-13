@@ -1,5 +1,6 @@
 import 'package:budget_app/models/jar.dart';
 import 'package:budget_app/services/budget_service.dart';
+import 'package:budget_app/screens/edit_jar_screen.dart'; // Import the new screen
 import 'package:budget_app/utils/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,13 @@ class _BudgetSettingsFormState extends State<BudgetSettingsForm> {
               },
             ),
             onTap: () {
-              // TODO: Implement Jar editing dialog/screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      EditJarScreen(jar: jar), // Navigate to EditJarScreen
+                ),
+              );
             },
           ),
         ),
@@ -52,14 +59,14 @@ class _BudgetSettingsFormState extends State<BudgetSettingsForm> {
           label: const Text("Add New Jar"),
           onPressed: () {
             // TODO: Implement Add Jar dialog/screen
-            // Example:
-            // final newJar = Jar(id: Uuid().v4(), name: "New Jar", iconName: "Package", budget: 0, color: Colors.blue);
-            // budgetService.addJar(newJar);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Add Jar functionality not fully implemented.'),
-              ),
+            final newJar = Jar(
+              id: const Uuid().v4(),
+              name: "New Jar",
+              iconName: "Package",
+              budget: 0,
+              color: Colors.blue,
             );
+            budgetService.addJar(newJar);
           },
         ),
         const SizedBox(height: 24),
@@ -70,13 +77,11 @@ class _BudgetSettingsFormState extends State<BudgetSettingsForm> {
         DropdownButtonFormField<int>(
           value: budgetData.resetDay,
           decoration: const InputDecoration(labelText: 'Day of Month'),
-          items:
-              List.generate(31, (index) => index + 1)
-                  .map(
-                    (day) =>
-                        DropdownMenuItem(value: day, child: Text('Day $day')),
-                  )
-                  .toList(),
+          items: List.generate(31, (index) => index + 1)
+              .map(
+                (day) => DropdownMenuItem(value: day, child: Text('Day $day')),
+              )
+              .toList(),
           onChanged: (value) {
             if (value != null) {
               budgetService.updateResetDay(value);
@@ -84,17 +89,6 @@ class _BudgetSettingsFormState extends State<BudgetSettingsForm> {
           },
         ),
         const SizedBox(height: 32),
-        // ElevatedButton(
-        //   onPressed: () {
-        //     // This button might not be needed if changes are saved on field modification
-        //     // or via specific "Save Jar" / "Save Reset Day" actions.
-        //     // If using a Form widget, formKey.currentState.save() would be here.
-        //     ScaffoldMessenger.of(context).showSnackBar(
-        //       const SnackBar(content: Text('Settings saved (placeholder)')),
-        //     );
-        //   },
-        //   child: const Text('Save All Settings'),
-        // ),
       ],
     );
   }
