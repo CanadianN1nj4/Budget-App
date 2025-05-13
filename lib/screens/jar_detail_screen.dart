@@ -12,9 +12,8 @@ class JarDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final budgetService = Provider.of<BudgetService>(context);
-    final expensesForJar =
-        budgetService.budgetData?.expenses
+    final BudgetService budgetService = Provider.of<BudgetService>(context);
+    final List<Expense> expensesForJar = budgetService.budgetData?.expenses
             .where((exp) => exp.jarId == jar.id)
             .toList() ??
         [];
