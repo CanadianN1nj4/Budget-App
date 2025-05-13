@@ -118,14 +118,13 @@ class BudgetService extends ChangeNotifier {
     for (var expense in _budgetData!.expenses) {
       final jar = _budgetData!.jars.firstWhere(
         (j) => j.id == expense.jarId,
-        orElse:
-            () => Jar(
-              id: 'unknown',
-              name: 'Unknown',
-              iconName: 'HelpCircle',
-              budget: 0,
-              color: Colors.grey,
-            ),
+        orElse: () => Jar(
+          id: 'unknown',
+          name: 'Unknown',
+          iconName: 'HelpCircle',
+          budget: 0,
+          color: Colors.grey,
+        ),
       );
       jar.spent += expense.amount;
     }
@@ -156,6 +155,27 @@ class BudgetService extends ChangeNotifier {
 
     _budgetData!.expenses.add(newExpense);
     await saveBudgetData(); // This will also recalculate totals and notify listeners
+  }
+
+  Future<void> deleteExpense(String expenseId) async {
+    if (_budgetData == null) return;
+
+    _budgetData!.expenses.removeWhere((expense) => expense.id == expenseId);
+    await saveBudgetData(); // Recalculates totals and notifies
+  }
+
+  Future<void> updateExpense(Expense updatedExpense) async {
+    if (_budgetData == null) return;
+
+    final index = _budgetData!.expenses
+        .indexWhere((expense) => expense.id == updatedExpense.id);
+    if (index != -1) {
+      _budgetData!.expenses[index] = updatedExpense;
+      await saveBudgetData(); // Recalculates totals and notifies
+    } else {
+      // Optionally handle case where expense to update is not found
+      debugPrint("Expense with ID ${updatedExpense.id} not found for update.");
+    }
   }
 
   Future<void> updateJar(Jar updatedJar) async {
