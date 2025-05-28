@@ -9,7 +9,9 @@
       "request": "launch",
       "type": "dart",
       "args": [
-        "--web-experimental-hot-reload"
+        "--web-experimental-hot-reload",
+        "--web-header=Cross-Origin-Opener-Policy=same-origin",
+        "--web-header=Cross-Origin-Embedder-Policy=require-corp"
       ]
     },
     {
