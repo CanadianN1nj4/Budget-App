@@ -4,4 +4,4 @@ targets:
       drift_dev:
         options:
           databases:
-            budget_jars: lib/src/database/database.dart
+            budget_jars_db: lib/src/database/database.dart
