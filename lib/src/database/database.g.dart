@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'database_service.dart';
+part of 'database.dart';
 
 // ignore_for_file: type=lint
 abstract class _$AppDatabase extends GeneratedDatabase {
