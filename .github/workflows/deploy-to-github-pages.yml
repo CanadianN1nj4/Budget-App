@@ -14,8 +14,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build flutter web
-        uses: ./.github/actions/setup-and-build-web
         id: build
+        uses: ./.github/actions/setup-and-build-web
+        with:
+          base-href: "/Budget-App/"
 
       - name: Upload build as artifact
         id: upload
