@@ -1,0 +1,22 @@
+name: Setup and build web
+description: Setup flutter and build the flutter web project
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        cache: true
+        channel: "stable"
+
+    - name: Install dependencies
+      run: flutter pub get
+      shell: bash
+
+    - name: Build web project
+      run: flutter build web --release
+      shell: bash
