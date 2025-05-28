@@ -17,11 +17,17 @@ dependencies:
   intl: ^0.19.0 # For date formatting
   flutter_colorpicker: ^1.0.0 # For color selection in settings (optional)
   lucide_icons: ^0.257.0 # For using Lucide icons
+  # Database dependencies
+  drift: ^2.26.1
+  drift_flutter: ^0.2.4
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  drift_dev: ^2.26.1
+  build_runner: ^2.4.15
 
 flutter:
   uses-material-design: true
