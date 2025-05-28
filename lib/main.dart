@@ -1,3 +1,4 @@
+import 'package:budget_app/src/database/database.dart' show AppDatabase;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:budget_app/screens/dashboard_screen.dart';
@@ -8,8 +9,10 @@ void main() async {
   // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
 
+  final AppDatabase db = AppDatabase();
+
   // Create an instance of BudgetService and load data
-  final budgetService = BudgetService();
+  final budgetService = BudgetService(db);
   await budgetService.loadBudgetData(); // Load data initially
 
   runApp(
