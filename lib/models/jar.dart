@@ -33,12 +33,12 @@ class Jar {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'iconName': iconName,
-    'budget': budget,
-    'spent': spent,
-    'color':
-        '#${color.value.toRadixString(16).substring(2)}', // Store as hex string
-  };
+        'id': id,
+        'name': name,
+        'iconName': iconName,
+        'budget': budget,
+        'spent': spent,
+        'color':
+            '#${color.toARGB32().toRadixString(16).substring(2)}', // Store as hex string
+      };
 }

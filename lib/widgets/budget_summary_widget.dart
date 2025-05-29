@@ -1,3 +1,4 @@
+import 'package:budget_app/utils/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:budget_app/theme/app_colors.dart';
@@ -60,8 +61,8 @@ class BudgetSummaryWidget extends StatelessWidget {
                 Text(
                   '\$${totalSpent.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ],
             ),
@@ -73,12 +74,11 @@ class BudgetSummaryWidget extends StatelessWidget {
                 Text(
                   '\$${remainingBudget.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color:
-                        remainingBudget >= 0
+                        fontWeight: FontWeight.bold,
+                        color: remainingBudget >= 0
                             ? Colors.green[700]
                             : AppColors.destructive,
-                  ),
+                      ),
                 ),
               ],
             ),
@@ -90,7 +90,8 @@ class BudgetSummaryWidget extends StatelessWidget {
             const SizedBox(height: 4),
             LinearProgressIndicator(
               value: percentageSpent,
-              backgroundColor: AppColors.muted.withOpacity(0.3),
+              backgroundColor:
+                  AppColors.muted.withAlpha(withOpacitytoWithAlpha(0.3)),
               valueColor: AlwaysStoppedAnimation<Color>(
                 _getProgressBarColor(percentageSpent),
               ),

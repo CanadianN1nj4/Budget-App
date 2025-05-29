@@ -1,3 +1,4 @@
+import 'package:budget_app/utils/helpers.dart';
 import 'package:budget_app/utils/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:budget_app/models/jar.dart';
@@ -51,7 +52,10 @@ class JarCard extends StatelessWidget {
                     size: 20,
                     color: Theme.of(
                       context,
-                    ).colorScheme.onSurface.withOpacity(0.7),
+                    )
+                        .colorScheme
+                        .onSurface
+                        .withAlpha(withOpacitytoWithAlpha(0.7)),
                   ),
                 ],
               ),
@@ -62,13 +66,14 @@ class JarCard extends StatelessWidget {
                   Text(
                     '\$${remaining.toStringAsFixed(2)} left',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(height: 4),
                   LinearProgressIndicator(
                     value: percentageSpent,
-                    backgroundColor: AppColors.muted.withOpacity(0.3),
+                    backgroundColor:
+                        AppColors.muted.withAlpha(withOpacitytoWithAlpha(0.3)),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       _getProgressColor(percentageSpent),
                     ),
