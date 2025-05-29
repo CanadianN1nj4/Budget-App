@@ -1,6 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:flutter/material.dart'
-    show Color; // Only needed for the Color type hint
 import '../converters/color_converter.dart';
 
 // Table for Jars

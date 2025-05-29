@@ -100,11 +100,13 @@ class _EditExpenseScreenState extends State<EditExpenseScreen> {
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return 'Please enter an amount.';
+                  }
                   if (double.tryParse(value) == null ||
-                      double.parse(value) <= 0)
+                      double.parse(value) <= 0) {
                     return 'Please enter a valid positive amount.';
+                  }
                   return null;
                 },
               ),

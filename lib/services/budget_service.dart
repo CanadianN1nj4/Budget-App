@@ -189,8 +189,9 @@ class BudgetService extends ChangeNotifier {
     String? description,
   }) async {
     if (_budgetData == null) await loadBudgetData(); // Ensure data is loaded
-    if (_budgetData == null)
+    if (_budgetData == null) {
       return; // Should not happen if loadBudgetData works
+    }
 
     final newExpense = model_expense.Expense(
       id: _uuid.v4(),
