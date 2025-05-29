@@ -1,3 +1,4 @@
+import 'package:budget_app/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -43,16 +44,17 @@ class AppColors {
   static const Color chart5 = Color(0xFFF57C00); // hsl(27 87% 67%) - approx
 
   // MaterialColor for primarySwatch
-  static MaterialColor primarySwatch = MaterialColor(primary.value, {
-    50: primary.withOpacity(0.1),
-    100: primary.withOpacity(0.2),
-    200: primary.withOpacity(0.3),
-    300: primary.withOpacity(0.4),
-    400: primary.withOpacity(0.5),
-    500: primary.withOpacity(0.6),
-    600: primary.withOpacity(0.7),
-    700: primary.withOpacity(0.8),
-    800: primary.withOpacity(0.9),
-    900: primary.withOpacity(1.0),
+  static MaterialColor primarySwatch = MaterialColor(primary.toARGB32(), {
+    50: primary.withAlpha(withOpacitytoWithAlpha(0.1)), // Opacity 0.1
+    100: primary.withAlpha(withOpacitytoWithAlpha(0.2)), // Opacity 0.2
+    200: primary.withAlpha(withOpacitytoWithAlpha(0.3)), // Opacity 0.3
+    300: primary.withAlpha(withOpacitytoWithAlpha(0.4)), // Opacity 0.4
+    400: primary.withAlpha(withOpacitytoWithAlpha(0.5)), // Opacity 0.5
+    500: primary.withAlpha(withOpacitytoWithAlpha(0.6)), // Opacity 0.6
+    600: primary.withAlpha(withOpacitytoWithAlpha(0.7)), // Opacity 0.7
+    700: primary.withAlpha(withOpacitytoWithAlpha(0.8)), // Opacity 0.8
+    800: primary.withAlpha(withOpacitytoWithAlpha(0.9)), // Opacity 0.9
+    900: primary
+        .withAlpha(withOpacitytoWithAlpha(1.0)), // Opacity 1.0 (fully opaque)
   });
 }

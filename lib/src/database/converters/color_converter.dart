@@ -7,5 +7,5 @@ class ColorConverter extends TypeConverter<Color, int> {
   @override
   Color fromSql(int fromDb) => Color(fromDb);
   @override
-  int toSql(Color value) => value.value;
+  int toSql(Color value) => value.toARGB32();
 }
