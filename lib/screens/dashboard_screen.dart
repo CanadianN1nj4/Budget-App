@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:budget_app/services/budget_service.dart';
 import 'package:budget_app/widgets/budget_summary_widget.dart';
 import 'package:budget_app/widgets/jar_card.dart';
-import 'package:budget_app/models/jar.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -98,9 +97,8 @@ class DashboardScreen extends StatelessWidget {
               budgetService.budgetData!.jars.isNotEmpty) {
             showDialog(
               context: context,
-              builder:
-                  (BuildContext dialogContext) =>
-                      AddExpenseDialog(jars: budgetService.budgetData!.jars),
+              builder: (BuildContext dialogContext) =>
+                  AddExpenseDialog(jars: budgetService.budgetData!.jars),
             );
           }
         },

@@ -21,7 +21,7 @@ class JarDetailScreen extends StatelessWidget {
         [];
     expensesForJar.sort((a, b) => b.date.compareTo(a.date)); // Newest first
 
-    void _showDeleteConfirmationDialog(BuildContext context, Expense expense) {
+    void showDeleteConfirmationDialog(BuildContext context, Expense expense) {
       showDialog(
         context: context,
         builder: (BuildContext dialogContext) {
@@ -93,7 +93,7 @@ class JarDetailScreen extends StatelessWidget {
                   IconButton(
                       icon: const Icon(Icons.delete, color: Colors.redAccent),
                       onPressed: () =>
-                          _showDeleteConfirmationDialog(context, expense)),
+                          showDeleteConfirmationDialog(context, expense)),
                 ],
               ),
             ),

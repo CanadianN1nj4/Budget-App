@@ -47,11 +47,13 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
                   decimal: true,
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return 'Please enter an amount.';
+                  }
                   if (double.tryParse(value) == null ||
-                      double.parse(value) <= 0)
+                      double.parse(value) <= 0) {
                     return 'Please enter a valid positive amount.';
+                  }
                   return null;
                 },
               ),
@@ -64,20 +66,19 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
               DropdownButtonFormField<String>(
                 value: _selectedJarId,
                 decoration: const InputDecoration(labelText: 'Jar'),
-                items:
-                    widget.jars.map((Jar jar) {
-                      return DropdownMenuItem<String>(
-                        value: jar.id,
-                        child: Text(jar.name),
-                      );
-                    }).toList(),
+                items: widget.jars.map((Jar jar) {
+                  return DropdownMenuItem<String>(
+                    value: jar.id,
+                    child: Text(jar.name),
+                  );
+                }).toList(),
                 onChanged: (String? newValue) {
                   setState(() {
                     _selectedJarId = newValue;
                   });
                 },
-                validator:
-                    (value) => value == null ? 'Please select a jar.' : null,
+                validator: (value) =>
+                    value == null ? 'Please select a jar.' : null,
               ),
             ],
           ),
@@ -95,10 +96,9 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
               Provider.of<BudgetService>(context, listen: false).addExpense(
                 jarId: _selectedJarId!,
                 amount: double.parse(_amountController.text),
-                description:
-                    _descriptionController.text.isNotEmpty
-                        ? _descriptionController.text
-                        : null,
+                description: _descriptionController.text.isNotEmpty
+                    ? _descriptionController.text
+                    : null,
               );
               Navigator.of(context).pop();
             }

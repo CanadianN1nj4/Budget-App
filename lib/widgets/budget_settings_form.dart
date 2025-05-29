@@ -58,7 +58,6 @@ class _BudgetSettingsFormState extends State<BudgetSettingsForm> {
           icon: const Icon(Icons.add),
           label: const Text("Add New Jar"),
           onPressed: () {
-            // TODO: Implement Add Jar dialog/screen
             final newJar = Jar(
               id: const Uuid().v4(),
               name: "New Jar",
